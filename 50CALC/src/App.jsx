@@ -227,7 +227,7 @@ function App() {
       <div className="calculator-container">
         <div className="calculator">
           <div className="header">
-            <h1>Enhanced Calculator</h1>
+            <h1>50-CALC</h1>
             <div className="header-buttons">
               <button className="history-toggle" onClick={toggleHistory}>
                 {showHistory ? 'Hide History' : 'Show History'}
