@@ -10,6 +10,8 @@ body {
   min-height: 100vh;
 }
 
+
+
 .App {
   display: flex;
   justify-content: center;
@@ -26,7 +28,7 @@ body {
 }
 
 .calculator {
-  background: white;
+  background: rgb(15, 15, 15);
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
@@ -39,7 +41,7 @@ body {
 }
 
 .header h1 {
-  color: #333;
+  color: #ffffff;
   margin: 0 0 15px 0;
   font-size: 2rem;
 }
@@ -54,7 +56,7 @@ body {
 
 .keyboard-hint {
   font-size: 0.8rem;
-  color: #666;
+  color: #ffffff;
   font-style: italic;
 }
 
@@ -101,9 +103,9 @@ body {
   font-size: 2.5rem;
   font-weight: bold;
   color: #276268;
-  background-color: #9fd4b8;
-  border-radius: 5px;
-  border: 1px solid rgb(161, 221, 214);
+  /* background-color: #9fd4b8; */
+  /* border-radius: 5px; */
+  /* border: 1px solid rgb(161, 221, 214); */
   margin: 0;
   min-height: 50px;
   display: flex;
@@ -186,7 +188,7 @@ button:active {
 }
 
 .number {
-  background: linear-gradient(145deg, #8dd3f0, #6bc5e8);
+  background: linear-gradient(145deg, #233942, #6bc5e8);
   color: #1a202c;
   border: 1px solid rgba(0,0,0,0.1);
   font-size: 1.3rem;
@@ -219,7 +221,7 @@ button:active {
 }
 
 .operator {
-  background: linear-gradient(145deg, #7289f5, #5a67d8);
+  background: linear-gradient(145deg, #1e243d, #5a67d8);
   color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   box-shadow: 
@@ -295,7 +297,7 @@ button:active {
 }
 
 .history-panel {
-  background: white;
+  background: rgb(0, 0, 0);
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
@@ -315,7 +317,7 @@ button:active {
 
 .history-header h3 {
   margin: 0;
-  color: #333;
+  color: #ffffff;
 }
 
 .clear-history {
@@ -355,7 +357,7 @@ button:active {
 
 .no-history {
   text-align: center;
-  color: #666;
+  color: #ffffff;
   font-style: italic;
   margin: 40px 0;
 }

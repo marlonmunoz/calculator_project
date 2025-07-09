@@ -8,6 +8,7 @@ function App() {
   const [currentInput, setCurrentInput] = useState('');
   const [operation, setOperation] = useState('');
   const [waitingForOperand, setWaitingForOperand] = useState(false);
+  const [displayExpression, setDisplayExpression] = useState('');
   const [history, setHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
 
@@ -84,17 +85,37 @@ function App() {
     } else {
       setCurrentInput(currentInput === '0' ? num : currentInput + num);
     }
-    inputRef.current.value = currentInput === '0' ? num : currentInput + num;
+    
+    const newInput = currentInput === '0' ? num : currentInput + num;
+    inputRef.current.value = newInput;
+    
+    // Update display expression
+    if (result !== 0 && operation && waitingForOperand) {
+      setDisplayExpression(`${result} ${operation} ${num}`);
+    } else if (result !== 0 && operation) {
+      setDisplayExpression(`${result} ${operation} ${newInput}`);
+    }
   }
 
   function appendDecimal() {
+    let newInput;
     if (waitingForOperand) {
       setCurrentInput('0.');
       setWaitingForOperand(false);
+      newInput = '0.';
     } else if (currentInput.indexOf('.') === -1) {
-      setCurrentInput(currentInput + '.');
+      newInput = currentInput + '.';
+      setCurrentInput(newInput);
+    } else {
+      return; // Don't add decimal if one already exists
     }
-    inputRef.current.value = currentInput.indexOf('.') === -1 ? currentInput + '.' : currentInput;
+    
+    inputRef.current.value = newInput;
+    
+    // Update display expression
+    if (result !== 0 && operation) {
+      setDisplayExpression(`${result} ${operation} ${newInput}`);
+    }
   }
 
   function backspace() {
@@ -102,15 +123,30 @@ function App() {
       const newInput = currentInput.slice(0, -1);
       setCurrentInput(newInput);
       inputRef.current.value = newInput;
+      
+      // Update display expression
+      if (result !== 0 && operation) {
+        setDisplayExpression(`${result} ${operation} ${newInput}`);
+      }
     } else {
       setCurrentInput('0');
       inputRef.current.value = '0';
+      
+      // Update display expression
+      if (result !== 0 && operation) {
+        setDisplayExpression(`${result} ${operation} 0`);
+      }
     }
   }
 
   function clearInput() {
     setCurrentInput('0');
     inputRef.current.value = '0';
+    
+    // Update display expression
+    if (result !== 0 && operation) {
+      setDisplayExpression(`${result} ${operation} 0`);
+    }
   }
 
   function resetAll() {
@@ -118,6 +154,7 @@ function App() {
     setCurrentInput('0');
     setOperation('');
     setWaitingForOperand(false);
+    setDisplayExpression('');
     inputRef.current.value = '0';
   }
 
@@ -126,11 +163,15 @@ function App() {
 
     if (result === 0) {
       setResult(inputValue);
+      setDisplayExpression(`${inputValue} ${nextOperation}`);
     } else if (operation) {
       const currentResult = result || 0;
       const calculationResult = performCalculation(currentResult, inputValue, operation);
       
       setResult(calculationResult);
+      setDisplayExpression(`${calculationResult} ${nextOperation}`);
+    } else {
+      setDisplayExpression(`${result} ${nextOperation}`);
     }
 
     setWaitingForOperand(true);
@@ -149,6 +190,7 @@ function App() {
       setOperation('');
       setCurrentInput(calculationResult.toString());
       setWaitingForOperand(true);
+      setDisplayExpression(''); // Clear expression after calculation
       inputRef.current.value = calculationResult.toString();
     }
   }
@@ -197,7 +239,7 @@ function App() {
           <form>
             <div className="display">
               <div className="operation-display">
-                {result !== 0 && operation ? `${result} ${operation}` : ''}
+                {displayExpression}
               </div>
               <p ref={resultRef} className="result">
                 {currentInput || '0'}
