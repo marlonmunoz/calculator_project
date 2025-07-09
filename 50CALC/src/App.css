@@ -91,7 +91,7 @@ body {
 }
 
 .display {
-  background: #f8f9fa;
+  background: #abc4de;
   border: 2px solid #e9ecef;
   border-radius: 15px;
   padding: 20px;
@@ -247,7 +247,7 @@ button:active {
 }
 
 .action {
-  background: linear-gradient(145deg, #56c97a, #38a169);
+  background: linear-gradient(145deg, #1c4429, #38a169);
   color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   box-shadow: 
@@ -273,7 +273,7 @@ button:active {
 }
 
 .reset {
-  background: linear-gradient(145deg, #f56565, #e53e3e) !important;
+  background: linear-gradient(145deg, #491e1e, #e53e3e) !important;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   box-shadow: 
     0 4px 8px rgba(229, 62, 62, 0.3),
@@ -397,7 +397,7 @@ button:active {
 }
 
 .equals {
-  background: linear-gradient(145deg, #48bb78, #38a169) !important;
+  background: linear-gradient(145deg, #214631, #38a169) !important;
   grid-column: span 2;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   box-shadow: 
